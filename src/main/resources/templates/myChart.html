@@ -1,0 +1,89 @@
+<html>
+<head>
+  <title>Highcharts Test</title>
+  <script src = "https://code.highcharts.com/highcharts.js"></script>
+</head>
+<body>
+<div id="container" style="height: 300px"></div>
+<script>
+var chartConfig={
+    title: {
+        text: 'Global temperature change'
+    },
+
+    subtitle: {
+        text: 'Data input from CSV'
+    },
+
+    data: {
+        csv: document.getElementById('csv').innerHTML
+    },
+
+    plotOptions: {
+        series: {
+            marker: {
+                enabled: false
+            }
+        }
+    },
+
+    series: [{
+        lineWidth: 1
+    }, {
+        type: 'areaspline',
+        color: '#c4392d',
+        negativeColor: '#5679c4',
+        fillOpacity: 0.5
+    }]
+});
+var chartData={
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: 'Fruit Consumption'
+            },
+            xAxis: {
+                categories: ['Apples', 'Bananas', 'Oranges']
+            },
+            yAxis: {
+                title: {
+                    text: 'Fruit eaten'
+                }
+            },
+            series: [{
+                name: 'Jane',
+                data: [1, 0, 4]
+            }, {
+                name: 'John',
+                data: [5, 7, 3]
+            }]
+        }
+var newData ={name: 'Marci', data: [7, 2, 5]};
+var newSData = {series: [{
+                name: 'ABC',
+                data: [2, 5, 1]
+            }, {
+                name: 'DEF',
+                data: [3, 1, 7]
+            }]};
+</script>
+<script>
+//document.addEventListener('DOMContentLoaded', function () {
+//Highcharts.chart('container', chartData);
+var chart = new Highcharts.Chart('container', chartData);
+//});
+</script>
+
+<button onclick="myFunction()">Click me</button>
+
+<p id="demo"></p>
+<script>
+function myFunction() {
+//chart.series[1].update(newData);
+chart.update(newSData);
+}
+</script>
+
+</body>
+</html>
